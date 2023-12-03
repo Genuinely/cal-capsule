@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cal Capsule</title>
+
+    <!-- Link to the AOS stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    />
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- AOS initialization script -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Link to your custom stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+    
+    <script>
+        $(document).ready(function () {
+          $.ajax({
+            url: "http://127.0.0.1:5000/timecapsule", // Replace with your Flask server address
+            method: "GET",
+            success: function (data) {
+              console.log(data);
+             // individual stats
+             var individualTotalMeetings =
+                data["Individual Stats"]["individual_total_meetings"]
+              var individualTotalMeetingHours =
+                data["Individual Stats"]["individual_total_meeting_hours"];
+                var individualAvgMeetingHours = data["Individual Stats"]["individual_average_meeting_hours"];
+            
+            var teamTotal = data["Team Stats"]["team_total_meetings"]
+            var teamHours = data["Team Stats"]["team_total_meetings_hours"];
+            var teamAvg = data["Team Stats"]["team_avg_meeting_hours"];
+            
+            //   var individualShortestMeeting =
+            //     data["Individual Stats"]["individual_shortest_meeting"];
+            //   var shortestMeetingEventName =
+            //     individualShortestMeeting["event_name"];
+            //   var shortestMeetingHours = individualShortestMeeting["hours"];
+  
+              // Example: Update UI with fetched data
+              $('#i1').text(individualTotalMeetings);
+              $('#i2').text(individualTotalMeetingHours);
+              $('#i3').text(individualAvgMeetingHours);
+
+            // Example: Update UI with fetched data
+            $('#t1').text(teamTotal);
+            $('#t2').text(teamHours);
+            $('#t3').text(teamAvg);
+            },
+            error: function (error) {
+              console.error("Error fetching data:", error);
+            },
+          });
+        });
+
+      AOS.init({
+        duration: 300,
+      });
+    </script>
+    
+  </head>
+  <script src="animation.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Welcome Animation-->
+  <body>
+    <section>
+      <div class="frame" data-aos="fade-up">
+        <img src="svg/frame1.svg" alt="svg1" />
+      </div>
+      <div id="frame2" class="frame" data-aos="fade-down">
+        <img src="svg/frame2.svg" alt="svg2" />
+      </div>
+      <div id="frame3" class="frame">
+        <img src="svg/frame3.svg" alt="svg3" />
+      </div>
+    </section>
+
+    <!-- Profile-->
+    <section>
+    How did you <div class="frame" data-aos="flip-up" data-aos-duration="700">connect</div> in 2023?
+  </section>
+    <!-- individual stats -->
+    <section>
+        <ul class="meeting-list">
+          <li data-aos="fade-right" data-aos-duration="500">
+            You took <span id="i1"></span> meetings
+          </li>
+          <li data-aos="fade-right" data-aos-duration="1000">
+            Those meetings took <span id="i2"></span> hours
+          </li>
+          <li data-aos="fade-right" data-aos-duration="1500">
+            You averaged <span id="i3"></span> hours per meeting
+          </li>
+        </ul>
+      </section>
+    <!-- Team -->
+      <section>
+        How about your <div class="frame" data-aos="flip-up" data-aos-duration="700">Team &#128640?</div>
+      </section>
+
+    <section>
+      <ul class="meeting-list">
+        <li data-aos="fade-left" data-aos-duration="500">
+          Your team took <span id="t1"></span> meetings
+        </li>
+        <li data-aos="fade-left" data-aos-duration="1500">
+          Your team's meetings took <span id="t3"></span> hours
+        </li>
+
+        <li data-aos="fade-left" data-aos-duration="1000">
+            And averaged <span id="t2"></span> hours per meeting!
+          </li>
+      </ul>
+    </section>
+
+    <!-- number counting -->
+    <!-- <section>
+      <div class="frame" data-aos="fade-right">
+        <div class="counter" data-count="984"></div>
+      </div>
+      <div class="frame" data-aos="fade-right">
+        <h1>meetings in 2023</h1>
+        <h2>
+          Similar sized teams at Cal.com held
+          <span id="totalMeetings"></span> meetings in 2023
+        </h2>
+      </div>
+    </section> -->
+
+    <!-- Graphs -->
+    <div class="frame" data-aos="fade-left">
+      <section>
+        <h2 data-aos="fade-down" data-aos-duration="1000">
+          Your team's favorite day to meet is Thursday!
+        </h2>
+        <canvas id="barChart"></canvas>
+      </section>
+    </div>
+    <section>
+        <div class="frame" data-aos="fade-down">
+            That's it for this year! See you in 2024! &#127881;
+          </div>
+    </section>
+    <section>
+        <div class="frame" data-aos="fade-up">
+            <img src="svg/frame1.svg" alt="svg1" />
+          </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7"></script>
+    <script src="chart.js"></script>
+    <script src="counter.js"></script>
+  </body>
+</html>
