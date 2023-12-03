@@ -1,5 +1,6 @@
 /* styles.css */
 @import url("node_modules/cal-sans/index.css");
+
 body {
     background-color: #131316;
     color: #ffffff;
@@ -32,4 +33,13 @@ section {
     opacity: 1;
     filter: blur(0);
     transform: translateX(0);
+}
+
+#counting-numbers {
+    font-size: 40pt; /* Correct selector for ID */
+}
+
+.counter {
+    font-size: 40pt;
+    font-weight: bold;
 }
