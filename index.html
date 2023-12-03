@@ -17,8 +17,8 @@
           duration: 300,
         });
     </script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7"></script>
 
 </head>
 <script src="animation.js"></script>
@@ -41,20 +41,32 @@
 
 <!-- number counting-->
 <section>
-  <div id="frame4" class="frame">
+  <ul class="meeting-list">
+    <li data-aos="fade-right" data-aos-duration="500">You took 35 meetings</li>
+    <li data-aos="fade-right" data-aos-duration="1000">Averaged 20 hours</li>
+    <li data-aos="fade-right" data-aos-duration="1500">Something something</li>
+</ul>
+</section>
+
+<!-- number counting-->
+<section>
+  <div class="frame" data-aos="fade-right">
     <div class="counter" data-count="984"></div>
   </div>
-  <h2>meetings in 2023</h2>
-    <p>Similar sized teams at Cal.com held 984 meetings in 2023</p>
+  <div class="frame" data-aos="fade-right">
+      <h1>meetings in 2023</h1>
+    <h2>Similar sized teams at Cal.com held 984 meetings in 2023<h2>
+  </div>
 </section>
 
 <!-- Graphs -->
   <!-- <h1>How did you connect in 2023?</h1> -->
-  <section>
-    <h1>Taco Thursday </h1>
+  <div class="frame" data-aos="fade-left">
+    <section>
+      <h2>Your team's favorite day to meet is Taco Thursday! </h2>
       <canvas id="barChart"></canvas>
-    <h1>Your team's meeting day is thursday </h2>
-  </section>
+    </section>
+  </div>
 
 <!-- Include scripts at the end to ensure DOM content is loaded -->
 
@@ -62,7 +74,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7"></script>
 <script src="chart.js"></script>
-<!-- <script src="counter.js"></script>  -->
+<script src="counter.js"></script>
 <!-- <script src="script.js"></script> -->
 <!-- Add this to the end of your HTML file, after other scripts -->
 </body>
