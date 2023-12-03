@@ -2,7 +2,7 @@
 @import url("node_modules/cal-sans/index.css");
 
 body {
-    background-color: #131316;
+    background-color: #131313;
     color: #ffffff;
     font-family: "Cal Sans", sans-serif;
     padding: 0;
@@ -22,18 +22,18 @@ section {
     min-height: 100vh;
 }
 
-.hidden {
+/* .hidden {
     opacity: 0;
     filter: blur(5px);
     transform: translateX(-100%);
     transition: all 1s;
-}
+} */
 
-.show {
+/* .show {
     opacity: 1;
     filter: blur(0);
     transform: translateX(0);
-}
+} */
 
 #counting-numbers {
     font-size: 40pt; /* Correct selector for ID */
@@ -42,4 +42,10 @@ section {
 .counter {
     font-size: 40pt;
     font-weight: bold;
+}
+
+.frame svg {
+    z-index: 1;
+    background-color: transparent;
+    visibility: visible;
 }
