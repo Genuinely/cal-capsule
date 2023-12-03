@@ -16,7 +16,7 @@ def timecapsule():
     name = str(request.args.get('name'))
 
     # # Filter the dataframe for meetings where name is the attendee
-    user_meetings = df[df['attendee_name'] == 'Bailey']
+    user_meetings = df[df['attendee_name'] == name]
 
     # # Calculate the duration of each meeting
     user_meetings['start_time'] = pd.to_datetime(user_meetings['start_time'])
@@ -33,6 +33,17 @@ def timecapsule():
     shortest_meeting = user_meetings['duration'].min().total_seconds() / 3600
     shortest_meeting_event_name = df.loc[user_meetings['duration'].idxmin()].event_name
 
+    user_meetings = df[(df['name'] == name) | (df['attendee_name'] == name)]
+    # Determine the other party in each meeting
+    user_meetings['other_party'] = user_meetings.apply(
+        lambda row: row['name'] if row['attendee_name'] == name else row['attendee_name'], 
+        axis=1
+    )
+
+    # Exclude instances where Bailey is both the host and the attendee
+    users_external_meetings = user_meetings[user_meetings['name'] != user_meetings['attendee_name']]
+    most_meetings_with = users_external_meetings['other_party'].value_counts().idxmax()
+
     data = {
         "Individual Stats": {
             "individual_total_meetings": total_meetings,
@@ -40,6 +51,7 @@ def timecapsule():
             "individual_average_meeting_hours": average_meeting_hours,
             "individual_longest_meeting": {"event_name": longest_meeting_event_name, "hours": longest_meeting},
             "individual_shortest_meeting": {"event_name": shortest_meeting_event_name, "hours": shortest_meeting},
+            "most_met_with": most_meetings_with
         },
         "Team Stats": {
             "team_total_meetings": 500,
