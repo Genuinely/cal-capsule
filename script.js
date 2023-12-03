@@ -22,6 +22,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function renderChart() {
+        const daysOfWeek = Utils.months({count: 7});
+        // Your code to render the chart goes here
+        // This can be your Chart.js initialization logic
+        // Example:
+        var ctx = document.getElementById('barChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: daysOfWeek,
+                datasets: [{
+                    label: 'Number of events',
+                    data: barValues,
+                    backgroundColor: barValues.map((value, index) => index === highlightedBarIndex ? '#fff' : '#888'),
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
     window.addEventListener('scroll', function () {
         var scroll = window.scrollY;
 
@@ -30,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var firstFrameEnd = frameHeight;
         var secondFrameEnd = frameHeight * 2;
 
-        if (scroll < firstFrameEnd - 20) {
+        if (scroll < firstFrameEnd) {
             anime({
                 targets: frame1,
                 opacity: 1,
@@ -78,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Ensure any counting stops when leaving frame4
             startCounting(); // Start counting animation if needed
+            // renderChart();
         }
     });
 });
