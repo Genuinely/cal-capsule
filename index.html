@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Typewriter Animation</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7"></script>
+<script src="script.js"></script>
+  </head>
+  <body>
     <section>
-        <div class="text-animation">
-            <div class="year">2023</div>
-            <div class="caption">Time Capsule</div>
-        </div>
-        <div class="static-text">
-            Your team held XXX meetings this year!
-        </div>
-    <script src="./node_modules/animejs/lib/anime.min.js"></script>
-    <script src="script.js"></script>
-</body>
+      <h1>2023</h1>
+      <h1>Time Capsule</h1>
+    </section>
+    
+    <section>
+      <h2>Your team held</h2>
+      <span id="counting-number">0</span>
+      <h2>meetings in 2023</h2>
+    </section>
+    
+    <section>
+      <h2>Which meetings are booked most frequently?</h2>
+      <h1>X number of attendees</h1>
+    </section>
+  </body>
 </html>
