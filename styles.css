@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "Cal Sans";
+    src: url('fonts/webfonts/CalSans-SemiBold.woff2') format('woff2');
+    font-weight: 600; /* Use the appropriate font weight (SemiBold) */
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.text-animation {
+    display: none;
+    position: relative;
+    color: #fff;
+    font-size: 50px;
+    font-family: "Cal Sans", sans-serif; /* Use the "Cal Sans" font */
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.text-animation .letter {
+    display: inline-block;
+    opacity: 0;
+}
+
+.scroll-content {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    z-index: 2; /* Make sure it's on top of the initial content */
+}
+
+.cursor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #fff;
+    z-index: 1;
+}
+
+.year {
+    display: block;
+}
+
+.caption {
+    display: block;
+}
