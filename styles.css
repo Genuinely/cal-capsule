@@ -21,6 +21,7 @@ h1 {
 }
 
 section {
+    
     display: grid;
     place-items: center;
     align-content: center;
@@ -50,6 +51,7 @@ section {
 }
 
 .frame {
+    font-size: 60pt;
     align-content: center;
 }
 .frame svg {
