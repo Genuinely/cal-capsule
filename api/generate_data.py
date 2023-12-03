@@ -42,6 +42,8 @@ for _ in range(100):  # Generate 10 meetings for example
     # Each meeting can have 1 to 5 attendees
     num_attendees = random.randint(1, 5)
     attendees = random.sample(attendee_names, num_attendees)
+    if name not in attendees:
+        attendees.append(name)
     event_name = random.choice(event_names)
     for attendee_name in attendees:
         meeting_data.append({
