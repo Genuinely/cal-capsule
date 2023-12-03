@@ -44,6 +44,19 @@ def timecapsule():
     users_external_meetings = user_meetings[user_meetings['name'] != user_meetings['attendee_name']]
     most_meetings_with = users_external_meetings['other_party'].value_counts().idxmax()
 
+    # Calculating team-wide statistics
+    team_total_meetings = len(df)
+    df['duration'] = pd.to_datetime(df['end_time']) - pd.to_datetime(df['start_time'])
+    team_total_meeting_hours = df['duration'].sum().total_seconds() / 3600
+    team_avg_meeting_hours = team_total_meeting_hours / team_total_meetings if team_total_meetings > 0 else 0
+
+    team_total_meetings, team_total_meeting_hours, team_avg_meeting_hours
+
+    df['meeting_day'] = pd.to_datetime(df['start_time']).dt.day_name()
+    most_common_meeting_day = df['meeting_day'].value_counts().idxmax()
+
+    meeting_day_distribution = df['meeting_day'].value_counts()
+
     data = {
         "Individual Stats": {
             "individual_total_meetings": total_meetings,
@@ -54,11 +67,11 @@ def timecapsule():
             "most_met_with": most_meetings_with
         },
         "Team Stats": {
-            "team_total_meetings": 500,
-            "team_total_meeting_hours": 1000.0,
-            "team_avg_meeting_hours": 2.0,
-            "most_met_with": {"user_id": 12345},
-            "most_common_meeting_day": "Wednesday"
+            "team_total_meetings": team_total_meetings,
+            "team_total_meeting_hours": team_total_meeting_hours,
+            "team_avg_meeting_hours": team_avg_meeting_hours,
+            "most_common_meeting_day": most_common_meeting_day,
+            "meeting_day_distribution": meeting_day_distribution.to_dict()
         }
     }
 
